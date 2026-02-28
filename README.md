@@ -38,6 +38,50 @@ nextflow run nf-core/sarek     -r 3.5.1     -profile docker     -c local_resourc
 # what is this command; samtools flagstat /results/align/XY006-AGRF.bam and this one: samtools flagstat XY007-AGRF.bam
 
 
+-[nf-core/sarek] Pipeline completed with errors-
+ERROR ~ Error executing process > 'NFCORE_SAREK:SAREK:FASTQ_ALIGN_BWAMEM_MEM2_DRAGMAP_SENTIEON:BWAMEM1_MEM (SampleName)'
+
+Caused by:
+  Process requirement exceeds available CPUs -- req: 24; avail: 12
+
+
+Command executed:
+
+  INDEX=`find -L ./ -name "*.amb" | sed 's/\.amb$//'`
+  
+  bwa mem \
+      -K 100000000 -Y -R "@RG\tID:null.SampleName.L001\tPU:L001\tSM:SampleName_SampleName\tLB:SampleName\tDS:s3://ngi-igenomes/igenomes//Homo_sapiens/GATK/GRCh38/Sequence/WholeGenomeFasta/Homo_sapiens_assembly38.fasta\tPL:ILLUMINA" \
+      -t 24 \
+      $INDEX \
+      0004.SampleName-L001_1.fastp.fastq.gz 0004.SampleName-L001_2.fastp.fastq.gz \
+      | samtools sort   --threads 24 -o SampleName.0004.bam -
+  
+  cat <<-END_VERSIONS > versions.yml
+  "NFCORE_SAREK:SAREK:FASTQ_ALIGN_BWAMEM_MEM2_DRAGMAP_SENTIEON:BWAMEM1_MEM":
+      bwa: $(echo $(bwa 2>&1) | sed 's/^.*Version: //; s/Contact:.*$//')
+      samtools: $(echo $(samtools --version 2>&1) | sed 's/^.*samtools //; s/Using.*$//')
+  END_VERSIONS
+
+Command exit status:
+  -
+
+Command output:
+  (empty)
+
+Work dir:
+  /home/ricky/Desktop/work/ec/278956150d57d5068837a5815553df
+
+Container:
+  quay.io/biocontainers/mulled-v2-fe8faa35dbf6dc65a0f7f5d4ea12e31a79f73e40:1bd8542a8a0b42e0981337910954371d0230828e-0
+
+Tip: view the complete command output by changing to the process work dir and entering the command `cat .command.out`
+
+ -- Check '.nextflow.log' file for details
+ERROR ~ Pipeline failed. Please refer to troubleshooting docs: https://nf-co.re/docs/usage/troubleshooting
+
+ -- Check '.nextflow.log' file for details
+
+
 
 
 
