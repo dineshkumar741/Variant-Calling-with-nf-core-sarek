@@ -88,4 +88,58 @@ ERROR ~ Pipeline failed. Please refer to troubleshooting docs: https://nf-co.re/
 
 
 
+Plus 21 more processes waiting for tasks…
+Execution cancelled -- Finishing pending tasks before exit
+-[nf-core/sarek] Pipeline completed with errors-
+ERROR ~ Error executing process > 'NFCORE_SAREK:SAREK:VCF_ANNOTATE_ALL:VCF_ANNOTATE_ENSEMBLVEP:ENSEMBLVEP_VEP (SampleName)'
+
+Caused by:
+  Process requirement exceeds available memory -- req: 36 GB; avail: 31.3 GB
+
+
+Command executed:
+
+  vep \
+      -i SampleName.haplotypecaller.vcf.gz \
+      -o SampleName.haplotypecaller_VEP.ann.vcf.gz \
+      --stats_file SampleName.haplotypecaller_VEP.ann.summary.html      --vcf --everything --filter_common --per_gene --total_length --offline --format vcf \
+      --compress_output bgzip \
+       \
+      --assembly GRCh38 \
+      --species homo_sapiens \
+      --cache \
+      --cache_version 113 \
+      --dir_cache ${PWD}/113_GRCh38 \
+      --fork 6
+  
+  
+  cat <<-END_VERSIONS > versions.yml
+  "NFCORE_SAREK:SAREK:VCF_ANNOTATE_ALL:VCF_ANNOTATE_ENSEMBLVEP:ENSEMBLVEP_VEP":
+      ensemblvep: $( echo $(vep --help 2>&1) | sed 's/^.*Versions:.*ensembl-vep : //;s/ .*$//')
+  END_VERSIONS
+
+Command exit status:
+  -
+
+Command output:
+  (empty)
+
+Work dir:
+  /home/ricky/Desktop/work/1e/a517f4e62e58fcb82dfff539ac8c3f
+
+Container:
+  quay.io/biocontainers/ensembl-vep:113.0--pl5321h2a3209d_0
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+
+ -- Check '.nextflow.log' file for details
+ERROR ~ Pipeline failed. Please refer to troubleshooting docs: https://nf-co.re/docs/usage/troubleshooting
+
+ -- Check '.nextflow.log' file for details
+
+
+
+
+
+
 
