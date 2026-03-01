@@ -141,5 +141,35 @@ ERROR ~ Pipeline failed. Please refer to troubleshooting docs: https://nf-co.re/
 
 
 
+# Final command
+nextflow run nf-core/sarek   -r 3.5.1   -profile docker   -c local_resources.config   --input samplesheet.csv   --outdir results   --genome GATK.GRCh38   --tools haplotypecaller,vep   --skip_tools haplotypecaller_filter   --max_cpus 12   -resume
 
+
+# Final 'local_resources.config' file
+// local_resources.config
+process {
+    // Using '.*' ensures it hits the process even inside subworkflows
+    withName: '.*:BWAMEM1_MEM' {
+        cpus = 12
+        memory = '16 GB'
+    }
+    withName: '.*:BWAMEM2_MEM' {
+        cpus = 12
+        memory = '16 GB'
+    }
+    withName: '.*:GATK4_HAPLOTYPECALLER' {
+        cpus = 4
+        memory = '12 GB' 
+    }
+    withName: '.*:CNVKIT_BATCH' {
+        cpus = 2
+        memory = '12 GB'
+    }
+    withName: '.*:ENSEMBLVEP_VEP' {
+        cpus = 4
+        memory = '12 GB'
+        // We add this to stop VEP from trying to use too many internal threads
+        ext.args = '--fork 4'
+    }
+}
 
