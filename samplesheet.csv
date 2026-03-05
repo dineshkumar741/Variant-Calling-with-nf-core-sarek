@@ -1,0 +1,2 @@
+patient,sample,lane,fastq_1,fastq_2
+XY001,XY001,L001,/home/ricky/Desktop/XY001_S1_L001_R1_001.fastq.gz,/home/ricky/Desktop/XY001_S1_L001_R2_001.fastq.gz
