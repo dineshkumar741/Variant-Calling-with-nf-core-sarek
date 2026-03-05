@@ -16,7 +16,7 @@ Command-2: It bypasses the GATK filter especially for synthtic datasets.
 
 2. nextflow run nf-core/sarek   -r 3.5.1   -profile docker   -c local_resources.config   --input samplesheet.csv   --outdir results   --genome GATK.GRCh38   --tools haplotypecaller,vep   --skip_tools haplotypecaller_filter   --max_cpus 12   -resume
 
-SAREK Pipeline requires the preparation samplesheet.csv based on the fastq files in gz format as i.e. 
+SAREK Pipeline requires the preparation samplesheet.csv based on the fastq files in gz format i.e. 
 
 XY001_S1_L001_R1_001.fastq.gz & XY001_S1_L001_R2_001.fastq.gz
 
