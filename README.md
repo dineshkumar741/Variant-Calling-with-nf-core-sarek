@@ -20,4 +20,5 @@ SAREK Pipeline requires the preparation samplesheet.csv based on the fastq files
 
 XY_S1_L001_R1_001.fastq.gz & XY_S1_L001_R2_001.fastq.gz
 
+XY - sample name, s1 - sample number, L001 - Lane number,  R(1&2) - Read number,  001 - set number
 
