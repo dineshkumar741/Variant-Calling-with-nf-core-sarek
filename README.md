@@ -8,11 +8,11 @@ https://github.com/nf-core/sarek
 This repository contains configuration files, samplesheet and execution scripts used to run the nf-core/sarek pipeline for variant discovery.
 
 
-# Command-1 : full structural variant/CNV/deletions/duplications/HaplotypeCaller
+Command-1 : full structural variant/CNV/deletions/duplications/HaplotypeCaller
 
 1. nextflow run nf-core/sarek     -r 3.5.1     -profile docker     -c local_resources.config     --input samplesheet.csv     --outdir ./sarek_results     --genome GATK.GRCh38     --tools haplotypecaller,manta,cnvkit     -resume
 
-# Command-2: It bypasses the GATK filter especially for synthtic datasets.
+Command-2: It bypasses the GATK filter especially for synthtic datasets.
 
 2. nextflow run nf-core/sarek   -r 3.5.1   -profile docker   -c local_resources.config   --input samplesheet.csv   --outdir results   --genome GATK.GRCh38   --tools haplotypecaller,vep   --skip_tools haplotypecaller_filter   --max_cpus 12   -resume
 
